@@ -5,32 +5,30 @@ using namespace std;
 #include"Grille.h"
 #include "Menu.h"
 
-//nvffjqlrjhglkqejglqzmgkz
-
 int main()
 {
-	// Création de la fenêtre
+	// CrÃ©ation de la fenÃªtre
 	sf::RenderWindow window(sf::VideoMode(500, 580), "Jeu de Taquin");
 
-	//Création des flux --> à passer en CSV
+	//CrÃ©ation des flux --> Ã  passer en CSV
 	string filename("taquin.txt");
 	fstream file;
 
-	//Ajout d'une police de caractères
+	//Ajout d'une police de caractÃ¨res
 	sf::Font font;
 	font.loadFromFile("font.ttf");
 
-	//Création d'objets grille et boutons
+	//CrÃ©ation d'objets grille et boutons
 	Grille myGrid(font);
 
-	//Création du menu
+	//CrÃ©ation du menu
 	Menu myMenu(font, &myGrid);
 
-	//Savoir si la partie est réussie
+	//Savoir si la partie est rÃ©ussie
 	bool victory = false;
 	bool setNewGame = false;
 
-	//Génération d'une combinaison aléatoire 
+	//GÃ©nÃ©ration d'une combinaison alÃ©atoire 
 	//myGrid.setListe();
 	//myGrid.exemple();
 	myGrid.chargerGrid(file, filename);
@@ -40,7 +38,7 @@ int main()
 	{
 		sf::Event event;
 		while (window.pollEvent(event)) { //pollevent ??????
-			// Demande de fermeture de la fenêtre
+			// Demande de fermeture de la fenÃªtre
 			if (event.type == sf::Event::Closed)
 				window.close();
 			else
@@ -48,8 +46,8 @@ int main()
 				{
 					myMenu.startNewGame(event, window);
 					myGrid.switchCases(event, window);
-					//Vérification de l'odre des cases : 1 si toutes les cases dans l'ordre croissant
-					//Ne pas répéter le message lors du click
+					//VÃ©rification de l'odre des cases : 1 si toutes les cases dans l'ordre croissant
+					//Ne pas rÃ©pÃ©ter le message lors du click
 					victory = myGrid.checkVictory();
 					if (victory)
 						cout << "Vous avez gagner" << endl;
@@ -58,7 +56,7 @@ int main()
 
 				}	
 		}
-		// On efface la fenêtre (en blanc)
+		// On efface la fenÃªtre (en blanc)
 		window.clear(sf::Color::White);
 				
 		// On affiche la grille et les boutons et les chiffres dans les cases
@@ -66,7 +64,7 @@ int main()
 		myMenu.drawBoutons(window);
 		myGrid.displayCases(window);
 
-		//Mise à jour de la fenêtre
+		//Mise Ã  jour de la fenÃªtre
 		window.display();
 	}
 
