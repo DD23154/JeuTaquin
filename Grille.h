@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Case.h"
 #include <fstream>
+#include "Case.h"
 
 class Grille
 {
